@@ -55,4 +55,54 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     window.addEventListener('scroll', animateOnScroll);
+    
+    // RSVP functionality
+    const weddingCheckbox = document.getElementById('wedding-checkbox');
+    const lunchCheckbox = document.getElementById('lunch-checkbox');
+    const groomBtn = document.getElementById('groom-btn');
+    const brideBtn = document.getElementById('bride-btn');
+    const messageText = document.getElementById('message-text');
+    
+    // Base URLs for WhatsApp messages
+    const baseGroomURL = "https://wa.me/+5519994644182?text=";
+    const baseBrideURL = "https://wa.me/+5519993684032?text=";
+    
+    // Update WhatsApp links based on checkbox selections
+    function updateWhatsAppLinks() {
+        const greeting = "Olá! Parabéns pelo seu casamento. ";
+        let displayMessage = "";
+        
+        if (weddingCheckbox.checked && lunchCheckbox.checked) {
+            displayMessage = "Confirmo que poderei ir na cerimônia e no almoço.";
+        } else if (weddingCheckbox.checked) {
+            displayMessage = "Confirmo que poderei ir na cerimônia, mas não poderei ir no almoço.";
+        } else if (lunchCheckbox.checked) {
+            displayMessage = "Confirmo que poderei ir no almoço, mas não poderei ir na cerimônia.";
+        } else {
+            displayMessage = ""; // Mensagem vazia quando nenhum checkbox está selecionado
+        }
+        
+        const fullMessage = greeting + (displayMessage || "");
+        
+        // Atualiza o texto da prévia da mensagem com a saudação
+        messageText.textContent = '"' + fullMessage + '"';
+        
+        // Add animation class to message preview
+        messageText.classList.add('pulse');
+        setTimeout(() => {
+            messageText.classList.remove('pulse');
+        }, 500);
+        
+        // Atualiza os links do WhatsApp com a mensagem completa
+        const encodedMessage = encodeURIComponent(fullMessage);
+        groomBtn.href = baseGroomURL + encodedMessage;
+        brideBtn.href = baseBrideURL + encodedMessage;
+    }
+    
+    // Initial update
+    updateWhatsAppLinks();
+    
+    // Add event listeners to checkboxes
+    weddingCheckbox.addEventListener('change', updateWhatsAppLinks);
+    lunchCheckbox.addEventListener('change', updateWhatsAppLinks);
 });

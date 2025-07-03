@@ -38,9 +38,7 @@
                 <p class="signature">
                     Com carinho,<br>
                     <span class="signature-names">
-                        <span class="sign-first-name">Lucas</span>
-                        <span class="sign-ampersand">&</span>
-                        <span class="sign-second-name">Alessandra</span>
+                        Lucas <span class="sign-ampersand">&</span> Alessandra
                     </span>
                 </p>
             </div>
@@ -52,10 +50,10 @@
                     <div class="card-inner">
                         <h3>Cerimônia</h3>
                         <div class="divider"><i class="fas fa-rings-wedding"></i></div>
-                        <p class="time">15:00</p>
-                        <p class="location">Igreja Santa Maria</p>
-                        <p class="address">Rua das Flores, 123, Cidade</p>
-                        <a href="https://maps.google.com/?q=Igreja+Santa+Maria+Cidade" class="btn" target="_blank">
+                        <p class="time">11:00</p>
+                        <p class="location">Igreja São Jorge</p>
+                        <p class="address">R. Salvador, 339 - Jardim São Jorge, Nova Odessa - SP, 13387-630</p>
+                        <a href="https://maps.google.com/?q=R.+Salvador,+339+-+Jardim+São+Jorge,+Nova+Odessa+-+SP,+13387-630" class="btn" target="_blank">
                             <i class="fas fa-map-marker-alt"></i> Ver Localização
                         </a>
                     </div>
@@ -63,11 +61,11 @@
 
                 <div class="detail-card reception">
                     <div class="card-inner">
-                        <h3>Recepção</h3>
+                        <h3>Almoço</h3>
                         <div class="divider"><i class="fas fa-glass-cheers"></i></div>
-                        <p class="time">18:00</p>
-                        <p class="location">Salão Palácio Dourado</p>
-                        <p class="address">Av. da Celebração, 456, Cidade</p>
+                        <p class="time">13:00</p>
+                        <p class="location">A definir</p>
+                        <p class="address">Av. de Definir, 456, Cidade Definida</p>
                         <a href="https://maps.google.com/?q=Salão+Palácio+Dourado+Cidade" class="btn" target="_blank">
                             <i class="fas fa-map-marker-alt"></i> Ver Localização
                         </a>
@@ -82,12 +80,37 @@
                 <div class="divider"><i class="fas fa-envelope"></i></div>
                 <p>Tem alguma dúvida ou quer confirmar sua presença? Fale conosco!</p>
                 
+                <div class="lunch-info">
+                    <h3>Almoço de Comemoração</h3>
+                    <p>Após a cerimônia, faremos um almoço de comemoração onde cada convidado pagará seu próprio consumo (R$ 29,90 por pessoa).</p>
+                </div>
+                
+                <div class="confirmation-options">
+                    <h3>Confirme sua Presença</h3>
+                    <div class="divider"><i class="fas fa-check-circle"></i></div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="wedding-checkbox" checked> 
+                            <i class="fas fa-church checkbox-icon"></i> Confirmo presença na cerimônia
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lunch-checkbox"> 
+                            <i class="fas fa-utensils checkbox-icon"></i> Confirmo presença no almoço
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="message-preview">
+                    <h4>Mensagem de confirmação</h4>
+                    <p id="message-text">"Confirmo que poderei ir na cerimônia, mas não poderei ir no almoço."</p>
+                </div>
+                
                 <div class="contact-options">
-                    <a href="https://wa.me/+5519994644182?text=Olá%20Lucas!%20Parabéns%20pelo%20seu%20casamento.%20Gostaria%20de%20confirmar%20minha%20presença." class="btn whatsapp-btn noivo-btn" target="_blank">
+                    <a href="https://wa.me/+5519994644182?text=Olá%20Lucas!%20Parabéns%20pelo%20seu%20casamento.%20Gostaria%20de%20confirmar%20minha%20presença." class="btn whatsapp-btn noivo-btn" id="groom-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Confirmar para o Noivo
                     </a>
                     
-                    <a href="https://wa.me/+5519993684032?text=Olá%20Alessandra!%20Parabéns%20pelo%20seu%20casamento.%20Gostaria%20de%20confirmar%20minha%20presença." class="btn whatsapp-btn noiva-btn" target="_blank">
+                    <a href="https://wa.me/+5519993684032?text=Olá%20Alessandra!%20Parabéns%20pelo%20seu%20casamento.%20Gostaria%20de%20confirmar%20minha%20presença." class="btn whatsapp-btn noiva-btn" id="bride-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Confirmar para a Noiva
                     </a>
                 </div>
