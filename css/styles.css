@@ -66,6 +66,21 @@ h3 {
     font-size: 1.2rem;
 }
 
+/* Estilos para os anéis de casamento */
+.wedding-ring-left,
+.wedding-ring-right {
+    position: relative;
+    margin: 0 3px;
+}
+
+.wedding-ring-left {
+    transform: rotate(-15deg) translateX(2px);
+}
+
+.wedding-ring-right {
+    transform: rotate(15deg) translateX(-2px);
+}
+
 a {
     text-decoration: none;
     color: #5c3d46;
@@ -518,12 +533,13 @@ section:nth-child(even) {
     justify-content: center;
     flex-wrap: nowrap;
     gap: 30px;
+    max-width: 1000px; /* Aumentando o tamanho máximo do container */
 }
 
 .detail-card {
     width: 100%;
-    max-width: 450px;
-    height: 400px;
+    max-width: 480px; /* Aumentado de 450px */
+    height: 450px; /* Aumentado de 400px */
     perspective: 1000px;
     margin-bottom: 30px;
 }
@@ -536,7 +552,7 @@ section:nth-child(even) {
     transform-style: preserve-3d;
     background-color: #fff;
     border-radius: 10px;
-    padding: 40px;
+    padding: 50px; /* Aumentado de 40px */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
@@ -547,25 +563,84 @@ section:nth-child(even) {
 }
 
 .detail-card:hover .card-inner {
-    transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
+.detail-card h3 {
+    font-size: 2rem; /* Aumentando o tamanho do título */
+    margin-bottom: 5px;
+}
+
+.detail-card .divider {
+    margin: 10px 0 20px; /* Ajustado para ter mais espaço após o divisor */
+}
+
 .detail-card .time {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Aumentado de 1.5rem */
     font-weight: bold;
-    margin: 10px 0;
+    margin: 15px 0; /* Aumentado de 10px 0 */
     color: #d4b5ba;
 }
 
 .detail-card .location {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
+    font-size: 1.5rem; /* Aumentado de 1.3rem */
+    margin-bottom: 10px; /* Aumentado de 5px */
 }
 
 .detail-card .address {
     color: #777;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Aumentado de 20px */
+    font-size: 1.1rem; /* Adicionando tamanho de fonte */
+    line-height: 1.5; /* Melhorando o espaçamento entre linhas */
+    max-width: 90%; /* Limitando a largura para melhor leitura */
+}
+
+.detail-card .btn {
+    padding: 14px 28px; /* Botão um pouco maior */
+    font-size: 1rem; /* Tamanho da fonte do botão aumentado */
+    margin-top: 10px; /* Adicionando margem superior */
+    position: relative;
+    margin-top: auto;
+    bottom: 0;
+}
+
+/* Melhorando os ícones nos cards de detalhes */
+.detail-card .divider i {
+    font-size: 1.5rem; /* Ícones um pouco maiores nos cards */
+    color: #d4b5ba;
+    transition: all 0.3s ease;
+}
+
+.detail-card:hover .divider i {
+    transform: scale(1.2); /* Pequena animação nos ícones ao passar o mouse */
+    color: #b68f98;
+}
+
+/* Melhorando os anéis de casamento nos cards */
+.detail-card .wedding-ring-left,
+.detail-card .wedding-ring-right {
+    color: #d4b5ba;
+    transition: all 0.3s ease;
+}
+
+.detail-card:hover .wedding-ring-left {
+    transform: rotate(-15deg) translateX(2px) scale(1.2);
+    color: #b68f98;
+}
+
+.detail-card:hover .wedding-ring-right {
+    transform: rotate(15deg) translateX(-2px) scale(1.2);
+    color: #b68f98;
+}
+
+/* Destacando os ícones nos dividers dos cards */
+.detail-card .divider i.fa-glass-cheers {
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.detail-card:hover .divider i.fa-glass-cheers {
+    transform: rotate(10deg) scale(1.2);
 }
 
 /* RSVP Section Styles */
@@ -627,6 +702,12 @@ section:nth-child(even) {
     font-size: 1rem;
     margin: 0;
     line-height: 1.5;
+}
+
+.message-preview p br {
+    display: block;
+    margin: 10px 0;
+    content: "";
 }
 
 .message-preview::before {
@@ -872,6 +953,33 @@ footer .fa-heart {
     font-weight: normal; /* Match footer font weight */
 }
 
+/* Efeito de flutuação suave para os cards */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Aplicar animação de flutuação aos cards */
+.detail-card .card-inner {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* Delay diferente para cada card para que não flutuem juntos */
+.detail-card.ceremony .card-inner {
+    animation-delay: 0s;
+}
+
+.detail-card.reception .card-inner {
+    animation-delay: 2.5s;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .header-content .first-name, .header-content .second-name,
@@ -894,7 +1002,29 @@ footer .fa-heart {
     }
     
     .detail-card {
-        height: 350px;
+        height: 420px; /* Ajustado para telas médias */
+        max-width: 100%; /* Ocupa toda a largura disponível */
+    }
+    
+    .card-inner {
+        padding: 40px 30px; /* Reduzindo padding horizontal em telas médias */
+    }
+    
+    .detail-card h3 {
+        font-size: 1.8rem; /* Reduzindo o tamanho do título */
+    }
+    
+    .detail-card .time {
+        font-size: 1.6rem;
+    }
+    
+    .detail-card .location {
+        font-size: 1.4rem;
+    }
+    
+    .detail-card .address {
+        font-size: 1rem;
+        margin-bottom: 25px;
     }
     
     .countdown-item {
@@ -908,7 +1038,9 @@ footer .fa-heart {
     }
     
     .details-section .container {
-        flex-wrap: wrap;
+        flex-direction: column; /* Empilha os cards em coluna */
+        align-items: center;
+        gap: 50px; /* Aumentando o espaçamento entre os cards quando empilhados */
     }
     
     section {
@@ -937,6 +1069,37 @@ footer .fa-heart {
         font-size: 1.2rem;
     }
     
+    .detail-card {
+        height: 400px; /* Ajustado para telas pequenas */
+    }
+    
+    .card-inner {
+        padding: 30px 20px; /* Reduzindo padding em telas pequenas */
+    }
+    
+    .detail-card h3 {
+        font-size: 1.6rem;
+    }
+    
+    .detail-card .time {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+    
+    .detail-card .location {
+        font-size: 1.3rem;
+    }
+    
+    .detail-card .address {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .detail-card .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
     .countdown-item {
         width: 80px;
         height: 80px;
@@ -959,5 +1122,23 @@ footer .fa-heart {
         font-size: 12px;
         top: 3px;
         left: 3px;
+    }
+}
+
+/* Animation for cards in details, gallery, and countdown sections */
+.detail-card.animated,
+.gallery-item.animated,
+.countdown-item.animated {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

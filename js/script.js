@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update WhatsApp links based on checkbox selections
     function updateWhatsAppLinks() {
-        const greeting = "Olá! Parabéns pelo seu casamento. ";
+        const greeting = "Olá! Parabéns pelo seu casamento! ";
         let displayMessage = "";
         
         if (weddingCheckbox.checked && lunchCheckbox.checked) {
@@ -82,10 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
             displayMessage = ""; // Mensagem vazia quando nenhum checkbox está selecionado
         }
         
-        const fullMessage = greeting + (displayMessage || "");
+        // Para a prévia HTML, usamos <br> para quebra de linha
+        let previewMessage = greeting;
+        if (displayMessage) {
+            previewMessage += "<br>" + displayMessage;
+        }
         
-        // Atualiza o texto da prévia da mensagem com a saudação
-        messageText.textContent = '"' + fullMessage + '"';
+        // Para o WhatsApp, usamos %0A para quebra de linha em URLs
+        const whatsappMessage = greeting + (displayMessage ? "%0A" + displayMessage : "");
+        
+        // Atualiza o texto da prévia da mensagem com a saudação e quebra de linha
+        messageText.innerHTML = '"' + previewMessage + '"';
         
         // Add animation class to message preview
         messageText.classList.add('pulse');
@@ -93,10 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
             messageText.classList.remove('pulse');
         }, 500);
         
-        // Atualiza os links do WhatsApp com a mensagem completa
-        const encodedMessage = encodeURIComponent(fullMessage);
-        groomBtn.href = baseGroomURL + encodedMessage;
-        brideBtn.href = baseBrideURL + encodedMessage;
+        // Atualiza os links do WhatsApp com a mensagem completa e a quebra de linha
+        groomBtn.href = baseGroomURL + whatsappMessage;
+        brideBtn.href = baseBrideURL + whatsappMessage;
     }
     
     // Initial update
