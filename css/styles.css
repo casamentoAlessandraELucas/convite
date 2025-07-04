@@ -548,8 +548,7 @@ section:nth-child(even) {
     width: 100%;
     height: 100%;
     position: relative;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+    /* Removida transição e transform-style */
     background-color: #fff;
     border-radius: 10px;
     padding: 50px; /* Aumentado de 40px */
@@ -562,9 +561,7 @@ section:nth-child(even) {
     border: 2px solid #d4b5ba;
 }
 
-.detail-card:hover .card-inner {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
+/* Removido efeito de hover no card */
 
 .detail-card h3 {
     font-size: 2rem; /* Aumentando o tamanho do título */
@@ -612,7 +609,7 @@ section:nth-child(even) {
 }
 
 .detail-card:hover .divider i {
-    transform: scale(1.2); /* Pequena animação nos ícones ao passar o mouse */
+    /* Removida transformação de escala */
     color: #b68f98;
 }
 
@@ -620,27 +617,23 @@ section:nth-child(even) {
 .detail-card .wedding-ring-left,
 .detail-card .wedding-ring-right {
     color: #d4b5ba;
-    transition: all 0.3s ease;
+    /* Removida transição */
 }
 
 .detail-card:hover .wedding-ring-left {
-    transform: rotate(-15deg) translateX(2px) scale(1.2);
+    /* Removida transformação */
     color: #b68f98;
 }
 
 .detail-card:hover .wedding-ring-right {
-    transform: rotate(15deg) translateX(-2px) scale(1.2);
+    /* Removida transformação */
     color: #b68f98;
 }
 
 /* Destacando os ícones nos dividers dos cards */
 .detail-card .divider i.fa-glass-cheers {
     font-size: 1.3rem;
-    transition: all 0.3s ease;
-}
-
-.detail-card:hover .divider i.fa-glass-cheers {
-    transform: rotate(10deg) scale(1.2);
+    /* Mantendo apenas o tamanho de fonte sem transição */
 }
 
 /* RSVP Section Styles */
@@ -834,13 +827,10 @@ section:nth-child(even) {
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    /* Removida transição */
 }
 
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
+/* Removido efeito de hover nos itens da galeria */
 
 /* Countdown Section */
 .countdown-section {
@@ -866,13 +856,10 @@ section:nth-child(even) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    /* Removida transição */
 }
 
-.countdown-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
+/* Removido efeito de hover nos itens de contagem regressiva */
 
 .countdown-item .number {
     font-size: 2.5rem;
@@ -953,32 +940,7 @@ footer .fa-heart {
     font-weight: normal; /* Match footer font weight */
 }
 
-/* Efeito de flutuação suave para os cards */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-/* Aplicar animação de flutuação aos cards */
-.detail-card .card-inner {
-    animation: float 5s ease-in-out infinite;
-}
-
-/* Delay diferente para cada card para que não flutuem juntos */
-.detail-card.ceremony .card-inner {
-    animation-delay: 0s;
-}
-
-.detail-card.reception .card-inner {
-    animation-delay: 2.5s;
-}
+/* Animação de flutuação e efeitos de hover nos cards removidos */
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -1125,20 +1087,4 @@ footer .fa-heart {
     }
 }
 
-/* Animation for cards in details, gallery, and countdown sections */
-.detail-card.animated,
-.gallery-item.animated,
-.countdown-item.animated {
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* Animações dos cards removidas */
