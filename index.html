@@ -18,6 +18,36 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
         
+        // Atualiza mensagem e links do WhatsApp conforme checkboxes
+        function updateConfirmationMessage() {
+            var wedding = document.getElementById('wedding-checkbox').checked;
+            var lunch = document.getElementById('lunch-checkbox').checked;
+            var msg = '';
+            if (wedding && lunch) {
+                msg = 'Olá! Confirmo que poderei ir na cerimônia e no almoço.';
+            } else if (wedding && !lunch) {
+                msg = 'Olá! Confirmo que poderei ir na cerimônia, mas não poderei ir no almoço.';
+            } else if (!wedding && lunch) {
+                msg = 'Olá! Confirmo que poderei ir apenas no almoço.';
+            } else {
+                msg = 'Olá! Infelizmente não poderei comparecer.';
+            }
+            // Adiciona os emoticons ao final da mensagem
+            if (wedding || lunch) {
+                msg += ' ⛪🍽️';
+            }
+            document.getElementById('message-text').textContent = '"' + msg + '"';
+
+            // Atualiza links do WhatsApp
+            var groomBase = 'https://wa.me/+5519994644182?text=';
+            var brideBase = 'https://wa.me/+5519993684032?text=';
+            var prefixGroom = '';
+            var prefixBride = '';
+            var encodedMsg = encodeURIComponent(msg);
+            document.getElementById('groom-btn').href = groomBase + encodedMsg;
+            document.getElementById('bride-btn').href = brideBase + encodedMsg;
+        }
+
         // Função para atualizar a saudação quando a página carregar
         window.onload = function() {
             var nameElement = document.getElementById('guest-name');
@@ -27,6 +57,10 @@
             } else {
                 nameElement.textContent = 'Querido(a) Amigo(a),';
             }
+            // Adiciona listeners para os checkboxes
+            document.getElementById('wedding-checkbox').addEventListener('change', updateConfirmationMessage);
+            document.getElementById('lunch-checkbox').addEventListener('change', updateConfirmationMessage);
+            updateConfirmationMessage();
         };
     </script>
 </head>
@@ -72,20 +106,19 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
                         <div class="divider"><i class="fas fa-ring wedding-ring-left"></i><i class="fas fa-ring wedding-ring-right"></i></div>
                         <p class="time">10:30</p>
                         <p class="location">Igreja São Jorge</p>
-                        <p class="address">R. Salvador, 339 - Jardim São Jorge, Nova Odessa - SP, 13387-630</p>
+                        <p class="address">Rua Salvador, 339 - Jardim São Jorge, Nova Odessa - SP, 13387-630</p>
                         <a href="https://maps.google.com/?q=R.+Salvador,+339+-+Jardim+São+Jorge,+Nova+Odessa+-+SP,+13387-630" class="btn" target="_blank">
                             <i class="fas fa-map-marker-alt"></i> Ver Localização
                         </a>
                     </div>
                 </div>
-
                 <div class="detail-card reception">
                     <div class="card-inner">
                         <h3>Almoço</h3>
                         <div class="divider"><i class="fas fa-glass-cheers"></i></div>
                         <p class="time">Após a cerimônia</p>
                         <p class="location">Salão Igreja Vila Azenha</p>
-                        <p class="address">R. João Thienne, 130 - Vila Azenha, Nova Odessa - SP, 13387-088</p>
+                        <p class="address">Rua João Thienne, 130 - Vila Azenha, Nova Odessa - SP, 13387-088</p>
                         <a href="https://www.google.com/maps/place/R.+Joao+Thienne,+130+-+Vila+Azenha,+Nova+Odessa+-+SP,+13387-088/@-22.770891,-47.293977,17z/data=!3m1!4b1!4m6!3m5!1s0x94c8977e0c1581bf:0xcf8440e9127e7600!8m2!3d-22.770896!4d-47.2914021!16s%2Fg%2F11qt2m3dlw?entry=ttu&g_ep=EgoyMDI1MDcyMC4wIKXMDSoASAFQAw%3D%3D" class="btn" target="_blank">
                             <i class="fas fa-map-marker-alt"></i> Ver Localização
                         </a>
@@ -96,17 +129,14 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
 
         <section class="rsvp-section">
             <div class="container">
-                <h2>Entre em Contato</h2>
+                <h2>Confirme sua presença</h2>
                 <div class="divider"><i class="fas fa-envelope"></i></div>
-                <p>Tem alguma dúvida ou quer confirmar sua presença? Fale conosco!</p>
-
-                <div class="lunch-info">
+                        <div class="lunch-info">
                     <h3>Almoço de Comemoração</h3>
-                    <p>Após a cerimônia, faremos um almoço de comemoração, por favor leve sua bebida e nos confirme a presença até 15/08.</p>
+                    <p>Após a cerimônia, faremos um almoço de comemoração, por favor leve sua bebida e nos confirme a presença até 15 de agosto de 2025 (sexta-feira).</p>
                 </div>
                 
                 <div class="confirmation-options">
-                    <h3>Confirme sua Presença</h3>
                     <div class="divider"><i class="fas fa-check-circle"></i></div>
                     <div class="checkbox-container">
                         <label class="checkbox-label">
@@ -114,7 +144,7 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
                             <i class="fas fa-church checkbox-icon"></i> Confirmo presença na cerimônia
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" id="lunch-checkbox"> 
+                            <input type="checkbox" id="lunch-checkbox" checked> 
                             <i class="fas fa-utensils checkbox-icon"></i> Confirmo presença no almoço
                         </label>
                     </div>
@@ -122,15 +152,15 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
                 
                 <div class="message-preview">
                     <h4>Mensagem de confirmação</h4>
-                    <p id="message-text">"Confirmo que poderei ir na cerimônia, mas não poderei ir no almoço."</p>
+                    <p id="message-text">"Confirmo que poderei ir na cerimônia ⛪ e no almoço 🍽️."</p>
                 </div>
                 
                 <div class="contact-options">
-                    <a href="https://wa.me/+5519994644182?text=Olá%20Lucas!%20Parabéns%20pelo%20seu%20casamento.%20Gostaria%20de%20confirmar%20minha%20presença." class="btn whatsapp-btn noivo-btn" id="groom-btn" target="_blank">
+                    <a href="https://wa.me/+5519994644182?text=Olá%20Lucas!%20Parabéns%20pelo%20seu%20casamento.%20Confirmo%20minha%20presença%20na%20cerimônia%20⛪%20e%20no%20almoço%20🍽️." class="btn whatsapp-btn noivo-btn" id="groom-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Confirmar para o Noivo
                     </a>
                     
-                    <a href="https://wa.me/+5519993684032?text=Olá%20Alessandra!%20Parabéns%20pelo%20seu%20casamento.%20Gostaria%20de%20confirmar%20minha%20presença." class="btn whatsapp-btn noiva-btn" id="bride-btn" target="_blank">
+                    <a href="https://wa.me/+5519993684032?text=Olá%20Alessandra!%20Parabéns%20pelo%20seu%20casamento.%20Confirmo%20minha%20presença%20na%20cerimônia%20⛪%20e%20no%20almoço%20🍽️." class="btn whatsapp-btn noiva-btn" id="bride-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Confirmar para a Noiva
                     </a>
                 </div>
