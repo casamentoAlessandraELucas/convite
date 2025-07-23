@@ -506,6 +506,15 @@ section:nth-child(even) {
     color: #666;
 }
 
+#guest-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #5c3d46;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-style: italic;
+}
+
 .signature {
     font-family: 'Great Vibes', cursive;
     font-size: 2rem;

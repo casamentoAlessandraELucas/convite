@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Set the date for the wedding (September 6, 2025)
-    const weddingDate = new Date("Sep 6, 2025 15:00:00").getTime();
+    // Set the date for the wedding (September 6, 2025, 10:30, GMT-3)
+    const weddingDate = new Date("2025-09-06T10:30:00-03:00").getTime();
     
     // Update the countdown every 1 second
     const countdown = setInterval(function() {
