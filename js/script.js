@@ -25,7 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // If the countdown is finished, display a message
         if (distance < 0) {
             clearInterval(countdown);
-            document.getElementById("countdown").innerHTML = "<p>Nosso grande dia chegou!</p>";
+            document.getElementById("countdown").innerHTML = `
+                <div class="detail-card animated" style="text-align:center; padding:2rem;">
+                    <h2 style="margin-bottom:1rem; color:#b48a78;">Chegou o grande dia!</h2>
+                    <p style="font-size:1.2rem;">Estamos muito felizes em compartilhar este momento especial com você.</p>
+                    <span style="font-size:2rem; display:block; margin-top:1rem;">💍✨</span>
+                </div>
+            `;
         }
     }, 1000);
 
