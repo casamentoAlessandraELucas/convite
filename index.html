@@ -15,7 +15,8 @@
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            // Não decodifica aqui, apenas retorna o valor cru
+            return results === null ? '' : results[1].replace(/\+/g, ' ');
         }
         
         // Atualiza mensagem e links do WhatsApp conforme checkboxes
@@ -53,7 +54,16 @@
             var nameElement = document.getElementById('guest-name');
             var names = getUrlParameter('names');
             if (names && names.trim() !== '') {
-                nameElement.textContent = names + ',';
+                // Decodifica até não mudar mais (protege contra múltiplas codificações)
+                var cleanNames = names;
+                try {
+                    while (cleanNames !== decodeURIComponent(cleanNames)) {
+                        cleanNames = decodeURIComponent(cleanNames);
+                    }
+                } catch (e) {
+                    // Se der erro, usa o valor atual
+                }
+                nameElement.textContent = cleanNames + ',';
             } else {
                 nameElement.textContent = 'Querido(a) Amigo(a),';
             }
