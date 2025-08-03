@@ -117,6 +117,7 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
                 <div class="detail-card ceremony">
                     <div class="card-inner">
                         <h3>Cerimônia</h3>
+                        <br>
                         <div class="divider"><i class="fas fa-ring wedding-ring-left"></i><i class="fas fa-ring wedding-ring-right"></i></div>
                         <p class="time">10:30</p>
                         <p class="location">Igreja São Jorge</p>
@@ -126,9 +127,14 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
                         </a>
                     </div>
                 </div>
-                <div class="detail-card reception">
+                <div class="detail-card reception" style="position: relative;">
+                    <!-- Aviso fixo e responsivo -->
+ 
+                        
+
                     <div class="card-inner">
                         <h3>Almoço</h3>
+                        <span>Leve sua bebida e cooler!</span>
                         <div class="divider"><i class="fas fa-glass-cheers"></i></div>
                         <p class="time">Após a cerimônia</p>
                         <p class="location">Salão Igreja Vila Azenha</p>
@@ -223,5 +229,32 @@ Queremos muito você conosco para celebrar nosso casamento e o início da nossa 
 
     <script src="js/script.js"></script>
 
+    <!-- Adicione ao <head> ou ao seu CSS principal -->
+    <style>
+.bring-drink-alert {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: #fff7fa;
+    color: #b5838d;
+    border-radius: 18px;
+    padding: 6px 14px;
+    font-size: 0.98em;
+    box-shadow: 0 1px 6px rgba(181,131,141,0.10);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+    pointer-events: none;
+}
+@media (max-width: 600px) {
+    .bring-drink-alert {
+        top: 8px;
+        right: 8px;
+        font-size: 0.92em;
+        padding: 5px 10px;
+    }
+}
+</style>
 </body>
 </html>
