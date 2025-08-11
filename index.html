@@ -35,8 +35,16 @@
             }
             // Adiciona os emoticons ao final da mensagem
             if (wedding || lunch) {
-                msg += ' ⛪🍽️';
+                msg += ' ';
+                if (wedding) {
+                    msg += '⛪';
+                }
+                if (lunch) {
+                    msg += '🍽️';
+                }
             }
+
+            
             document.getElementById('message-text').textContent = '"' + msg + '"';
 
             // Atualiza links do WhatsApp
